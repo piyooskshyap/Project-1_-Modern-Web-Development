@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            background-color: black;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .cursor {
+            transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.7s;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            z-index: 999;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+    <div class="main"></div>
+    <script>
+        function mousefollower() {
+            window.addEventListener("mousemove", (e) => {
+                const miniCircle = document.querySelector(".cursor");
+                if (e.y < 20) {
+                    miniCircle.style.width = "5px";
+                    miniCircle.style.height = "5px";
+                    miniCircle.style.transform = `translate(${e.x}px, ${e.y - 20}px)`;
+                }
+                else if (e.y > 580) {
+                    miniCircle.style.width = "5px";
+                    miniCircle.style.height = "5px";
+                    miniCircle.style.transform = `translate(${e.x}px, ${e.y + 20}px)`;
+
+                }
+                else {
+                    miniCircle.style.width = "20px";
+                    miniCircle.style.height = "20px";
+                    miniCircle.style.display = "block";
+                    miniCircle.style.transform = `translate(${e.x - 10}px, ${e.y - 10}px)`;
+                }
+            });
+        }
+        mousefollower()
+    </script>
+</body>
+
+</html>
